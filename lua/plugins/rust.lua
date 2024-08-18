@@ -1,8 +1,8 @@
 return {
   {
-    'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
-    ft = { 'rust' },
+    "mrcjkb/rustaceanvim",
+    version = "^3", -- Recommended
+    ft = { "rust" },
     -- dependencies = {
     --   "nvim-lua/plenary.nvim",
     --   {
@@ -10,23 +10,24 @@ return {
     --     opts = {}
     --   },
     -- },
-    -- config = function()
-    --   vim.g.rustaceanvim = {
-    --     inlay_hints = {
-    --       highlight = "NonText",
-    --     },
-    --     tools = {
-    --       hover_actions = {
-    --         auto_focus = true,
-    --       },
-    --     },
-    --     server = {
-    --       on_attach = function(client, bufnr)
-    --         require("lsp-inlayhints").on_attach(client, bufnr)
-    --       end
-    --     }
-    --   }
-    -- end
+    config = function()
+      vim.keymap.set("n", "<leader>cr", "<cmd>vsplit | terminal cargo-run-selectable<cr>", { desc = "Run current project via cargo" })
+      -- vim.g.rustaceanvim = {
+      --   inlay_hints = {
+      --     highlight = "NonText",
+      --   },
+      --   tools = {
+      --     hover_actions = {
+      --       auto_focus = true,
+      --     },
+      --   },
+      --   server = {
+      --     on_attach = function(client, bufnr)
+      --       require("lsp-inlayhints").on_attach(client, bufnr)
+      --     end
+      --   }
+      -- }
+    end,
   },
   -- crates
   {
@@ -37,7 +38,7 @@ return {
     event = { "BufRead", "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("crates").setup {
+      require("crates").setup({
         -- null_ls = {
         --   enabled = true,
         --   name = "crates.nvim",
@@ -45,7 +46,7 @@ return {
         popup = {
           border = "rounded",
         },
-      }
+      })
     end,
   },
 }
